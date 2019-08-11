@@ -1,12 +1,21 @@
 import React from 'react';
 import styles from './style.css';
 
-const Navbar = () => {
+const Navbar = props => {
+    const {
+        activeTab,
+        onTabChange
+    } = props;
+
     return (
-        <nav className="navbar-container">
-            <ul className="navbar-list">
-                <li className="navbar-list-item">Items</li>
-                <li className="navbar-list-item">Cart</li>
+        <nav className={styles.navbarContainer}>
+            <ul className={styles.navbarList}>
+                <li className={`${styles.navbarListItem} ${activeTab === 0 ? styles.navbarItemActive : ""}`}>
+                    <a onClick={()=>onTabChange(0)}>Items</a>
+                </li>
+                <li className={`${styles.navbarListItem} ${activeTab === 1 ? styles.navbarItemActive : ""}`}>
+                    <a onClick={()=>onTabChange(1)}>Cart</a>
+                </li>
             </ul>
         </nav>
     );
